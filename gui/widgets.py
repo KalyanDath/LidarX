@@ -10,7 +10,7 @@ class PlotterWidget(QWidget):
         super().__init__()  
         self.plotter = QtInteractor(self)
         self.plotter.set_background('black', top="#0a6595")
-        self.plotter.add_axes(line_width=1, x_color="red", y_color= "green", z_color="00b2ff")
+        self.plotter.add_camera_orientation_widget()
         layout = QVBoxLayout()
         layout.addWidget(self.plotter)
         self.setLayout(layout)

@@ -8,4 +8,4 @@ def point_picking(points,plotter):
     if text_actor is not None:
         plotter.remove_actor(text_actor)   
 
-    text_actor = plotter.add_text(f"Picked Point:\nX:{points[0]:.2f}\nY:{points[1]:.2f}\nZ:{points[2]:.2f}",position="upper_right",font_size=12)
+    text_actor = plotter.add_text(f"Picked Point:\nX:{points[0]:.2f}\nY:{points[1]:.2f}\nZ:{points[2]:.2f}",position="lower_left",font_size=16,shadow=True)
