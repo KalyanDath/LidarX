@@ -37,9 +37,8 @@ class point_picking_widget(QWidget):
     def toggle_action(self):
         if self.sender().isChecked():
             # Perform an action when the toggle button is selected
-            self.main_window.plotter_widget.plotter.enable_point_picking(callback=lambda picked_point: point_picking(picked_point,self.main_window.plotter_widget.plotter),color='white',use_mesh=False)
-            # Enable your point picking functionality here
+            self.main_window.plotter_widget.plotter.enable_point_picking(callback=lambda picked_point: point_picking(picked_point,self.main_window.plotter_widget.plotter,True),show_point=False)
+            
         else:
             # Perform an action when the toggle button is deselected
-            self.main_window.plotter_widget.plotter.disable_picking()
-            # Disable your point picking functionality here
+            point_picking([],self.main_window.plotter_widget.plotter,False)
