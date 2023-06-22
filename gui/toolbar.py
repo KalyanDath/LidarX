@@ -1,13 +1,13 @@
-from PyQt5.QtWidgets import QToolBar
+from PyQt5.QtWidgets import QToolBar,QPushButton
 from PyQt5.QtGui import QIcon
 import data_visualization.views as views
-from gui.widgets import point_picking_widget
+from gui.widgets import point_picking_widget,point_distance_widget
 from PyQt5.QtCore import QSize
 
 def create_toolbar(main_window):
     toolbar = QToolBar(main_window)
     main_window.addToolBar(toolbar)
-    toolbar.setStyleSheet("background-color: white;")
+    #toolbar.setStyleSheet("background-color: white;")
 
     # Add the buttons with icons to the toolbar
     toolbar.addAction(QIcon("gui/static/front-view.png"), "Set Front View",lambda: views.front_view(main_window.plotter_widget.plotter))
@@ -21,3 +21,11 @@ def create_toolbar(main_window):
     # Add other toolbar actions
     pick_point = point_picking_widget(main_window)
     toolbar.addWidget(pick_point)
+
+    point_distance = point_distance_widget(main_window)
+    toolbar.addWidget(point_distance)
+
+
+    
+    return (pick_point,point_distance)
+    

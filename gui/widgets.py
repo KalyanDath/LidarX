@@ -36,9 +36,44 @@ class point_picking_widget(QWidget):
 
     def toggle_action(self):
         if self.sender().isChecked():
+            
             # Perform an action when the toggle button is selected
+            self.main_window.point_distance.setEnabled(False)
             self.main_window.plotter_widget.plotter.enable_point_picking(callback=lambda picked_point: point_picking(picked_point,self.main_window.plotter_widget.plotter,True),show_point=False)
             
         else:
             # Perform an action when the toggle button is deselected
             point_picking([],self.main_window.plotter_widget.plotter,False)
+            self.main_window.point_distance.setEnabled(True)
+
+
+class point_distance_widget(QWidget):
+    def __init__(self,mainwindow):
+        self.main_window = mainwindow
+        super().__init__()
+        self.initUI()
+
+    def initUI(self):
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+
+        # Create the toggle button with an icon
+        toggle_button = QPushButton()
+        icon_size = QSize(32, 32)  # Adjust the icon size as needed
+        toggle_button.setIconSize(icon_size)
+        toggle_button.setIcon(QIcon("gui/static/point_distance.png"))  # Set the path to your icon image
+        toggle_button.setCheckable(True)
+        toggle_button.clicked.connect(self.toggle_action)
+        layout.addWidget(toggle_button)
+
+    def toggle_action(self):
+        if self.sender().isChecked():
+            self.main_window.pick_point.setEnabled(False)
+            self.main_window.plotter_widget.plotter.enable_path_picking(callback=None,color="red")
+            # Perform an action when the toggle button is selected
+            pass
+        else:
+            self.main_window.pick_point.setEnabled(True)
+            self.main_window.plotter_widget.plotter.disable_picking()
+            # Perform an action when the toggle button is deselected
+            pass

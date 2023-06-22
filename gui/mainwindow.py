@@ -27,4 +27,6 @@ class MainWindow(QMainWindow):
         create_menu_bar(self)   #self.create_menu_bar()
 
         #create a toolbar
-        create_toolbar(self)    #self.create_toolbar()
+        pick_point,point_distance=create_toolbar(self)    #self.create_toolbar()
+        self.pick_point = pick_point
+        self.point_distance = point_distance
