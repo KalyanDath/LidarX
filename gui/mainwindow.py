@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow,QVBoxLayout, QWidget, QMenuBar, QAction, QFileDialog, QToolBar
+from PyQt5.QtWidgets import QMainWindow,QVBoxLayout, QWidget
 from PyQt5.QtGui import QIcon
 from gui.widgets import PlotterWidget
 import os
@@ -30,3 +30,5 @@ class MainWindow(QMainWindow):
         pick_point,point_distance=create_toolbar(self)    #self.create_toolbar()
         self.pick_point = pick_point
         self.point_distance = point_distance
+        pick_point.setToolTip("Pick a point on the plot")
+        point_distance.setToolTip("Measure distance between points")
