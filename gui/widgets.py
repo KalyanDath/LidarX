@@ -3,6 +3,7 @@ from pyvistaqt import QtInteractor
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QSize
 from data_visualization.pick_point import point_picking
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class PlotterWidget(QWidget):
@@ -77,3 +78,4 @@ class point_distance_widget(QWidget):
             self.main_window.plotter_widget.plotter.disable_picking()
             # Perform an action when the toggle button is deselected
             pass
+

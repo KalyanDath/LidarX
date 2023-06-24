@@ -21,9 +21,17 @@ def create_menu_bar(main_window):
     shader_filters_menu.setIcon(QIcon("gui/static/shader.png"))
 
     #Add Sub Menu
-    action1 = QAction("Remove Filters " ,main_window)
+    action1 = QAction(QIcon("gui/static/remove.png"),"Remove Filters " ,main_window)
     action2 = QAction("EDL Shader"      ,main_window)
     action3 = QAction("SSAO Shader"     ,main_window)
+
+    action1.setEnabled(False) 
+
+    def enable_action1():
+        action1.setEnabled(True)
+
+    action2.triggered.connect(enable_action1)
+    action3.triggered.connect(enable_action1)
 
     shader_filters_menu.addAction(action1)
     shader_filters_menu.addAction(action2)
@@ -32,6 +40,7 @@ def create_menu_bar(main_window):
     action1.triggered.connect(lambda: remove_filter(main_window.plotter_widget.plotter))
     action2.triggered.connect(lambda: edl_shader(main_window.plotter_widget.plotter))
     action3.triggered.connect(lambda: ssao_shader(main_window.plotter_widget.plotter))
+    
 
 
 
