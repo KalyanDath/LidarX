@@ -2,10 +2,10 @@ import pyvista as pv
 import numpy as np
 
 def visualizer(las_file,plotter):
-    x = las_file.x
-    y = las_file.y
-    z = las_file.z
-
+    x = las_file.X
+    y = las_file.Y
+    z = las_file.Z
+    
     #Create Polydata from points in las file
     points = np.vstack((x,y,z)).transpose()
     cloud = pv.PolyData(points)
@@ -21,7 +21,13 @@ def visualizer(las_file,plotter):
         cloud["color_by"] = z
 
     plotter.clear()
-    plotter.add_mesh(cloud,scalars="color_by", point_size=1, style="points",reset_camera=True,show_scalar_bar=False)
+    actor = plotter.add_mesh(cloud, point_size=1,scalars="color_by", style="points",reset_camera=True,show_scalar_bar=False)
     plotter.disable_eye_dome_lighting()
+
+
+    #toggle the point cloud for visibility
+    def toggle_vis(flag):
+        actor.SetVisibility(flag)
+    _ = plotter.add_checkbox_button_widget(toggle_vis, value=True, size=35, color_on = 'green')
     
     plotter.show()
