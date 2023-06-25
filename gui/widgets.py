@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout,QPushButton
 from pyvistaqt import QtInteractor
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QSize
-from data_visualization.pick_point import point_picking
+from data_visualization.pick_point import PointPicker
 
 
 class PlotterWidget(QWidget):
@@ -20,6 +20,7 @@ class point_picking_widget(QWidget):
         self.main_window = mainwindow
         super().__init__()
         self.initUI()
+        self.point_picker = None
 
     def initUI(self):
         layout = QVBoxLayout()
@@ -55,11 +56,13 @@ class point_picking_widget(QWidget):
             
             # Perform an action when the toggle button is selected
             self.main_window.point_distance.setEnabled(False)
-            self.main_window.plotter_widget.plotter.enable_point_picking(callback=lambda picked_point: point_picking(picked_point,self.main_window.plotter_widget.plotter,True),show_point=False)
+            self.point_picker = PointPicker(self.main_window.plotter_widget.plotter)
+            self.main_window.plotter_widget.plotter.enable_point_picking(callback=self.point_picker.point_picking,
+                                                                         show_point=False)
             
         else:
             # Perform an action when the toggle button is deselected
-            point_picking([],self.main_window.plotter_widget.plotter,False)
+            self.point_picker.disable()
             self.main_window.point_distance.setEnabled(True)
 
 
