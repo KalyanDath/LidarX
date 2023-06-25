@@ -16,8 +16,8 @@ def create_toolbar(main_window):
     toolbar.addAction(QIcon("gui/static/right-view.png"), "Set Right View",lambda: views.right_side_view(main_window.plotter_widget.plotter))
     toolbar.addAction(QIcon("gui/static/top-view.png"), "Set Top View",lambda: views.top_view(main_window.plotter_widget.plotter))
     toolbar.addAction(QIcon("gui/static/bottom-view.png"), "Set Bottom View",lambda: views.bottom_view(main_window.plotter_widget.plotter))
-    toolbar.addAction(QIcon("gui/static/front-isometric.png"), "Set Front Isometric View",lambda: views.front_isometric_view(main_window.plotter_widget.plotter))
-    toolbar.addAction(QIcon("gui/static/back-isometric.png"), "Set Back Isometric View",lambda: views.back_isometric_view(main_window.plotter_widget.plotter))
+    toolbar.addAction(QIcon("gui/static/front-iso.svg"), "Set Front Isometric View",lambda: views.front_isometric_view(main_window.plotter_widget.plotter))
+    toolbar.addAction(QIcon("gui/static/back-iso.svg"), "Set Back Isometric View",lambda: views.back_isometric_view(main_window.plotter_widget.plotter))
     # Add other toolbar actions
     pick_point = point_picking_widget(main_window)
     toolbar.addWidget(pick_point)
