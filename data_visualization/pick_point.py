@@ -5,19 +5,14 @@ class PointPicker:
         self.plotter = plotter
         self.text_actor = None
         self.point_actor = None
-
     def point_picking(self,points):
-        if self.text_actor is not None:
-            self.plotter.remove_actor(self.text_actor)
-            self.plotter.remove_actor(self.point_actor)
-
         self.point_actor = self.plotter.add_mesh(pv.PolyData(points), color='red', 
                                                  point_size=10, style='points',reset_camera=False,
-                                                 render_points_as_spheres=True)
+                                                 render_points_as_spheres=True,name='point')
         self.text_actor = self.plotter.add_point_labels(points,[f"Picked Point:\n X:{points[0]:.2f}\n Y:{points[1]:.2f}\n Z:{points[2]:.2f}"],
                                                                 font_size=24,show_points=False,
                                                                 shape_color="black",shape_opacity=0.8,
-                                                                always_visible=True,text_color="#CCCCCC")
+                                                                always_visible=True,text_color="#CCCCCC",name='point_label')
     def disable(self):
         self.plotter.remove_actor(self.text_actor)
         self.plotter.remove_actor(self.point_actor)
