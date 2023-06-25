@@ -2,9 +2,9 @@ import pyvista as pv
 import numpy as np
 
 def visualizer(las_file,plotter):
-    x = las_file.X
-    y = las_file.Y
-    z = las_file.Z
+    x = las_file.x
+    y = las_file.y
+    z = las_file.z
     
     #Create Polydata from points in las file
     points = np.vstack((x,y,z)).transpose()
