@@ -197,7 +197,7 @@ class ReadLas:
         
     def read_point_data(self):
         self.file.seek(self.header['offset_to_point_data'][0])
-        print("KKKKKKKKKKKKKKKK",self.header['point_data_record_length'])
+        #print("KKKKKKKKKKKKKKKK",self.header['point_data_record_length'])
         if self.header['point_data_record_length'] == 28:
             point_data_types = self.point_data_types0
         elif self.header['point_data_record_length'] == 35:
@@ -214,7 +214,7 @@ class ReadLas:
             point_data_types = self.point_data_types6
         self.file.seek(self.header['offset_to_point_data'][0])
         self.point_data = np.fromfile(self.file, dtype=point_data_types, count=self.header['legacy_number_of_point_records'][0])
-        #print(self.point_data['X'])
+        ##print(self.point_data['X'])
         self.X = np.array(self.point_data['X']*self.header['x_scale_factor'] + self.header['x_offset'])
         self.Y = np.array(self.point_data['Y']*self.header['y_scale_factor'] + self.header['y_offset'])
         self.Z = np.array(self.point_data['Z']*self.header['z_scale_factor'] + self.header['z_offset'])
@@ -230,12 +230,15 @@ class ReadLas:
             self.green = self.point_data['green']
             self.blue = self.point_data['blue']
         except:
-            print("No RGB values")
+            pass
+            #print("No RGB values")
         try:
             self.gps_time = self.point_data['gps_time']
         except:
-            print("No GPS time")
+            pass
+            #print("No GPS time")
         try:
             self.return_number = self.point_data['return_number']
         except:
-            print("No return number")
+            pass
+            #print("No return number")
