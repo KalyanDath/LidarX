@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout,QPushButton
 from pyvistaqt import QtInteractor
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QSize
+from data_visualization.distance import distance_calculation
 from data_visualization.pick_point import PointPicker
 
 
@@ -103,7 +104,8 @@ class point_distance_widget(QWidget):
     def toggle_action(self):
         if self.sender().isChecked():
             self.main_window.pick_point.setEnabled(False)
-            self.main_window.plotter_widget.plotter.enable_path_picking(callback=None,color="red")
+            self.main_window.plotter_widget.plotter.enable_point_picking(callback=lambda picked_point: distance_calculation(picked_point,self.main_window.plotter_widget.plotter),show_point=False,color='blue')  
+
             # Perform an action when the toggle button is selected
             pass
         else:
