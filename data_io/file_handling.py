@@ -13,7 +13,7 @@ def read_file(file_path, plotter):
         pass
 
 def process_las_file(file_path,plotter):
-    las_file = las_file_handle.read_file(file_path)
+    #las_file = las_file_handle.read_file(file_path)
     las_file = laspy.read(file_path)
     plotter.reset_camera()
     visualization.visualizer(las_file,plotter)

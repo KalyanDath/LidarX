@@ -27,8 +27,9 @@ class MainWindow(QMainWindow):
         create_menu_bar(self)   #self.create_menu_bar()
 
         #create a toolbar
-        pick_point,point_distance=create_toolbar(self)    #self.create_toolbar()
+        decimate_cloud,pick_point,point_distance=create_toolbar(self)    #self.create_toolbar()
         self.pick_point = pick_point
         self.point_distance = point_distance
         pick_point.setToolTip("Pick a point on the plot")
         point_distance.setToolTip("Measure distance between points")
+        decimate_cloud.setToolTip("Deciamte the Point Cloud")

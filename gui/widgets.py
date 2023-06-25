@@ -4,6 +4,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QSize
 from data_visualization.pick_point import PointPicker
 from data_visualization.point_distance import PointDistance
+from data_visualization.decimation import decimate
 
 
 class PlotterWidget(QWidget):
@@ -114,4 +115,48 @@ class point_distance_widget(QWidget):
             self.main_window.pick_point.setEnabled(True)
             self.point_distance.disable()
             
+class decimate_cloud_widget(QWidget):
+    def __init__(self,mainwindow):
+        self.main_window = mainwindow
+        super().__init__()
+        self.initUI()
+
+    def initUI(self):
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+
+        # Create the toggle button with an icon
+        toggle_button = QPushButton()
+        toggle_button.setStyleSheet("""
+            QPushButton {
+                background-color: #2ecc71;
+                color: #ffffff;
+                border-radius: 5px;
+                border: none;
+                padding: 5px;
+            }
+            QPushButton:hover {
+                background-color: #27ae60;
+            }
+            QPushButton:checked {
+                background-color: #27ae60;
+            }
+        """)
+        icon_size = QSize(32, 32)  # Adjust the icon size as needed
+        toggle_button.setIconSize(icon_size)
+        toggle_button.setIcon(QIcon("gui/static/cloud_decimate.png"))  # Set the path to your icon image
+        toggle_button.setCheckable(True)
+        toggle_button.clicked.connect(self.toggle_action)
+        layout.addWidget(toggle_button)
+
+    def toggle_action(self):
+        if self.sender().isChecked():
+            # Perform an action when the toggle button is selected
+            self.main_window.pick_point.setEnabled(False)
+            decimate(self.main_window.plotter_widget.plotter)
+            
+        else:
+            # Perform an action when the toggle button is deselected
+            self.main_window.pick_point.setEnabled(True)
+            self.main_window.plotter_widget.plotter.clear_slider_widgets()
             

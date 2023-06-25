@@ -10,10 +10,11 @@ def visualizer(las_file,plotter):
     #Create Polydata from points in las file
     points = np.vstack((x,y,z)).transpose()
     cloud = pv.PolyData(points)
-    print(cloud.number_of_points)
+
     if cloud.number_of_points >= 30000000:
         cloud = optimized(cloud)
-    
+        
+    cloud.save("cloud.vtk")
     #Criteria to Color the points
     try:
         color_points = np.vstack((las_file.red, las_file.green, las_file.blue)).transpose()
@@ -26,8 +27,8 @@ def visualizer(las_file,plotter):
 
     
     actor = plotter.add_mesh(cloud, point_size=1,scalars="color_by", style="points",reset_camera=True,show_scalar_bar=False,name='point_cloud')
-    
     plotter.disable_eye_dome_lighting()
+
 
 
     #toggle the point cloud for visibility
