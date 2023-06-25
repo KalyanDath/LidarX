@@ -34,6 +34,7 @@ def create_menu_bar(main_window):
     action3.triggered.connect(lambda: ssao_shader(main_window.plotter_widget.plotter))
 
 
+    #Add BOunding Axes
 
 # Function for open action in File
 def file_dialog(main_window):

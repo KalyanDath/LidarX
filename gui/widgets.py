@@ -107,4 +107,4 @@ class point_distance_widget(QWidget):
             self.main_window.pick_point.setEnabled(True)
             self.main_window.plotter_widget.plotter.disable_picking()
             # Perform an action when the toggle button is deselected
-            pass
+            

@@ -24,8 +24,5 @@ def create_toolbar(main_window):
 
     point_distance = point_distance_widget(main_window)
     toolbar.addWidget(point_distance)
-
-
-    
     return (pick_point,point_distance)
     
