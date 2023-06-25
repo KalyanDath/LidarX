@@ -15,4 +15,4 @@ def decimate_cloud(slider_value,plotter):
     plotter.add_mesh(new_cloud,point_size=1,scalars='color_by',style="points",name='point_cloud',reset_camera=False,show_scalar_bar=False)
 
 def decimate(plotter):
-    plotter.add_slider_widget(lambda slider_value: decimate_cloud(slider_value,plotter),[1,100], title="Reduction Ratio", value=100, color="white")
+    plotter.add_slider_widget(lambda slider_value: decimate_cloud(slider_value,plotter),[1,100], title="Reduction Ratio", value=50, color="white")

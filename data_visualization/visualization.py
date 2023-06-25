@@ -25,7 +25,7 @@ def visualizer(las_file,plotter):
     except:
         cloud["color_by"] = cloud.points[:,2]   #color by elevation
 
-    
+    plotter.clear()
     actor = plotter.add_mesh(cloud, point_size=1,scalars="color_by", style="points",reset_camera=True,show_scalar_bar=False,name='point_cloud')
     plotter.disable_eye_dome_lighting()
 
