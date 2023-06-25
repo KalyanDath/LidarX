@@ -51,7 +51,7 @@ class PointDistance:
         mid_point_x = (x_1+x_2)/2  
         mid_point_y = (y_1+y_2)/2
         mid_point_z = (z_1+z_2)/2
-        return [f"Distance: \n {euclid_distance}"], [mid_point_x,mid_point_y,mid_point_z]
+        return [f"Distance: \n {euclid_distance:.5f} m"], [mid_point_x,mid_point_y,mid_point_z]
     
     def disable(self):
         for actor in self.text_actors:

@@ -104,16 +104,14 @@ class point_distance_widget(QWidget):
 
     def toggle_action(self):
         if self.sender().isChecked():
+            # Perform an action when the toggle button is selected
             self.main_window.pick_point.setEnabled(False)
             self.point_distance = PointDistance(self.main_window.plotter_widget.plotter)
             self.main_window.plotter_widget.plotter.enable_point_picking(callback=self.point_distance.distance_plot,
                                                                          show_point=False)
-            
-            #self.main_window.plotter_widget.plotter.enable_path_picking(callback=None,color="red")
-            # Perform an action when the toggle button is selected
-            pass
         else:
+            # Perform an action when the toggle button is deselected
             self.main_window.pick_point.setEnabled(True)
             self.point_distance.disable()
-            # Perform an action when the toggle button is deselected
+            
             

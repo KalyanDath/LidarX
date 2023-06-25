@@ -1,5 +1,6 @@
 import pyvista as pv
 import numpy as np
+from data_visualization.optimize import optimized
 
 def visualizer(las_file,plotter):
     x = las_file.x
@@ -9,6 +10,9 @@ def visualizer(las_file,plotter):
     #Create Polydata from points in las file
     points = np.vstack((x,y,z)).transpose()
     cloud = pv.PolyData(points)
+    print(cloud.number_of_points)
+    if cloud.number_of_points >= 30000000:
+        cloud = optimized(cloud)
     
     #Criteria to Color the points
     try:
@@ -18,10 +22,11 @@ def visualizer(las_file,plotter):
         rgba /= rgba.max(axis=0)
         cloud["color_by"] = rgba#color_points
     except:
-        cloud["color_by"] = z
+        cloud["color_by"] = cloud.points[:,2]   #color by elevation
 
-    plotter.clear()
-    actor = plotter.add_mesh(cloud, point_size=1,scalars="color_by", style="points",reset_camera=True,show_scalar_bar=False)
+    
+    actor = plotter.add_mesh(cloud, point_size=1,scalars="color_by", style="points",reset_camera=True,show_scalar_bar=False,name='point_cloud')
+    
     plotter.disable_eye_dome_lighting()
 
 
