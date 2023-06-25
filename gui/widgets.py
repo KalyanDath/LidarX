@@ -90,10 +90,10 @@ class point_distance_widget(QWidget):
                 padding: 5px;
             }
             QPushButton:hover {
-                background-color: #27ae60;
+                background-color: #1b7a43;
             }
             QPushButton:checked {
-                background-color: #27ae60;
+                background-color: #1b7a43;
             }
         """)
         icon_size = QSize(32, 32)  # Adjust the icon size as needed
@@ -129,17 +129,17 @@ class decimate_cloud_widget(QWidget):
         toggle_button = QPushButton()
         toggle_button.setStyleSheet("""
             QPushButton {
-                background-color: #2ecc71;
+                background-color:  #8e44ad;
                 color: #ffffff;
                 border-radius: 5px;
                 border: none;
                 padding: 5px;
             }
             QPushButton:hover {
-                background-color: #27ae60;
+                background-color: #6c3483;;
             }
             QPushButton:checked {
-                background-color: #27ae60;
+                background-color:  #6c3483;
             }
         """)
         icon_size = QSize(32, 32)  # Adjust the icon size as needed

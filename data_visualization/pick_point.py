@@ -14,6 +14,10 @@ class PointPicker:
                                                                 shape_color="black",shape_opacity=0.8,
                                                                 always_visible=True,text_color="#CCCCCC",name='point_label')
     def disable(self):
-        self.plotter.remove_actor(self.plotter.actors['point'])
-        self.plotter.remove_actor(self.plotter.actors['point_label-labels'])
-        self.plotter.disable_picking()
+        try:
+            self.plotter.remove_actor(self.plotter.actors['point'])
+            self.plotter.remove_actor(self.plotter.actors['point_label-labels'])
+        except:
+            pass
+        finally:
+            self.plotter.disable_picking()
