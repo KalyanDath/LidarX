@@ -41,7 +41,6 @@ class PointDistance:
                                                                 font_size=24,show_points=False,
                                                                 shape_color="red",shape_opacity=0.9,
                                                                 always_visible=True,text_color="#CCCCCC"))
-            print(self.plotter.actors)
         if len(self.picked_points)>2:
             pass        
 
@@ -55,4 +54,9 @@ class PointDistance:
         return [f"Distance: \n {euclid_distance}"], [mid_point_x,mid_point_y,mid_point_z]
     
     def disable(self):
+        for actor in self.text_actors:
+                self.plotter.remove_actor(actor)
+        for actor in self.point_actors:
+                self.plotter.remove_actor(actor)
+        self.plotter.remove_actor(self.line_actor)
         self.plotter.disable_picking()
